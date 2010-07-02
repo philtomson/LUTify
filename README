@@ -1,0 +1,22 @@
+The make_lut function takes a function with one input and turns it into a lookup
+table.  This can be useful for modling harware, for example.  Take the sin function; 
+it's difficult to implement in hardware without resorting to something like CORDIC
+...or lookup tables.  
+
+Here's a usage example:
+
+#let sinlut, sinlutfn = make_lut (sin) 0.0 (pi/. 2.0) 0.1 ;;
+
+Where sinlut is the actual array of values:
+  [|0; 0.0998334166468; 0.198669330795; 0.295520206661; 0.389418342309;
+    0.479425538604; 0.564642473395; 0.644217687238; 0.7173560909;
+    0.783326909627; 0.841470984808; 0.891207360061; 0.932039085967;
+    0.963558185417; 0.985449729988; 0.997494986604; 0.999573603042|]
+
+and sinlutfn is a function that takes 
+an input x and gives you sin(x) by looking it up in the table:
+
+# sinlutfn (pi /. 2.0) ;;
+- : float = 0.999573603042
+
+
