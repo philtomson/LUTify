@@ -23,3 +23,5 @@ an input x and gives you sin(x) by looking it up in the table:
 - : float = 0.999573603042
 
 ...more to come.
+
+TODO: use fixed-point values in the lookup table.
